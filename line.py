@@ -10,7 +10,7 @@ df = pd.read_csv("Dataset/intro_bees.csv")
 
 df = df.groupby(['State', 'ANSI', 'Affected by', 'Year', 'state_code'])[['Pct of Colonies Impacted']].mean()
 df.reset_index(inplace=True)
-print(df.head())
+print(df.head()) 
 
 app.layout = html.Div(children=[html.H1(children = 'Bees Line Plot') ,
                       dcc.Graph(
@@ -18,7 +18,7 @@ app.layout = html.Div(children=[html.H1(children = 'Bees Line Plot') ,
                           figure = {
                               'data' : [
                                   go.Line(
-                                  x = df['State'],
+                                  x = df['Year'],
                                   y = df['Pct of Colonies Impacted'],
                                   marker = dict(color = 'indigo')
                               )
