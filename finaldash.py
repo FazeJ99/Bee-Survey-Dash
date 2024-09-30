@@ -12,7 +12,10 @@ df = pd.read_csv("Dataset/intro_bees.csv")
 df = df.groupby(['State', 'ANSI', 'Affected by', 'Year', 'state_code'])[['Pct of Colonies Impacted']].mean()
 df.reset_index(inplace=True)
 
-app.layout = html.Div(children=[html.H1(children='Bees Bar Plot')  ,
+app.layout = html.Div([
+    html.H1("Merged Dash Application"),
+    
+html.Div(children=[html.H1(children='Bees Bar Plot')  ,
           dcc.Graph(
               figure = {
                   'data':[go.Bar(
@@ -42,6 +45,6 @@ html.Div(children=[html.H1(children = 'Bees Line Plot') ,
                       )
                       ]
                       )
-
+])
 if __name__ == '__main__':
     app.run_server(debug = True)
